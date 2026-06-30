@@ -30,7 +30,7 @@ EmotionsTooltip.prototype.load = function (element) {
 
       tooltipButton.innerHTML = icon;
       tooltipButton.dataset.emotion = emotion !== 'default';
-      this.player.player.Module.SendMessage(UNITY_EMOTIONS_OBJECT, action);
+      this.player.applyEmotion(UNITY_EMOTIONS_OBJECT, action);
       this.hide();
     });
   });
