@@ -52,14 +52,14 @@ $height-set: 450px;
   }
 
   @media (max-width: 450px) {
-    > div {
-      top: 40% !important;
-      max-width: 120px !important;
-    }
-
-    & div:last-child {
-      box-shadow: -3px 0 0 0 #222c36 !important;
-    }
+    // > div {
+    //   top: 40% !important;
+    //   max-width: 120px !important;
+    // }
+    //
+    // & div:last-child {
+    //   box-shadow: -3px 0 0 0 #222c36 !important;
+    // }
   }
 }
 
