@@ -5,6 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const constants = require(`./plugin/constants/${mode}-paths`);
 
 const webpackConfig = {
@@ -14,7 +15,7 @@ const webpackConfig = {
     chunkFilename: 'vlibras-plugin.chunk.js',
     library: 'VLibras',
     libraryTarget: 'window',
-    publicPath: constants.ROOT_PATH,
+    publicPath: 'auto',
   },
   resolve: {
     modules: [path.join(__dirname, 'plugin'), 'node_modules'],
@@ -55,6 +56,17 @@ const webpackConfig = {
     new CompressionPlugin(),
     new webpack.ProvidePlugin({ '~constants': '~constants' }),
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 2 }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(
+            __dirname,
+            './node_modules/vlibras/build/libs/js/draco'
+          ),
+          to: path.resolve(__dirname, 'libs/js/draco'),
+        },
+      ],
+    }),
   ],
   optimization: {
     minimize: true,
